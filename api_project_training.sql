@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 11, 2021 lúc 10:45 AM
+-- Thời gian đã tạo: Th10 13, 2021 lúc 10:07 AM
 -- Phiên bản máy phục vụ: 10.4.19-MariaDB
 -- Phiên bản PHP: 7.4.19
 
@@ -128,7 +128,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (16, '2014_10_12_100000_create_password_resets_table', 1),
 (17, '2019_08_19_000000_create_failed_jobs_table', 1),
 (18, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(19, '2021_10_11_025142_create_articles_table', 1);
+(19, '2021_10_11_025142_create_articles_table', 1),
+(20, '2021_10_12_031636_adds_api_token_to_users_table', 2);
 
 -- --------------------------------------------------------
 
@@ -174,8 +175,28 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `api_token` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `api_token`) VALUES
+(1, 'Administrator', 'admin@test.com', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
+(2, 'Miss Myrtis Baumbach', 'reichert.darby@hotmail.com', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
+(3, 'Antwon Kessler', 'selmer.considine@rodriguez.com', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
+(4, 'Cleve Reilly', 'prudence.lakin@yahoo.com', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
+(5, 'Travis Ankunding', 'yweissnat@yahoo.com', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
+(6, 'Winnifred Walsh', 'uwolf@yahoo.com', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
+(7, 'Leif Moore', 'cielo19@hotmail.com', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
+(8, 'Dr. Libby Macejkovic', 'dickens.lavon@gmail.com', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
+(9, 'Mrs. Nya McLaughlin V', 'jast.darrell@macejkovic.info', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
+(10, 'Prof. Nels Jenkins', 'bosco.jaren@nikolaus.com', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
+(11, 'Alf Heller', 'tony80@gmail.com', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
+(12, 'khiem handsome', 'khiemnx@test.com', NULL, '$2y$10$IcsLItUgRHrzfqmU07QLVeWY0ySUwhLeI.BB7u6OZ/Fy2Jln/k6Hy', NULL, '2021-10-11 23:25:27', '2021-10-13 00:23:10', NULL),
+(13, 'Khiem NX', 'khiem@test.com', NULL, '$2y$10$Jj5B7RsoIbdqBlvlaVFnG.NAbVw1MSIV1x7zI.NHPXPjaFkK1/HBG', NULL, '2021-10-13 00:31:11', '2021-10-13 00:50:00', 'Bflz2vKj5LQEkCzctxJIkmI9YziBw4OZ7KJg315AwlSSuUcOcWit1aekDAOV');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -219,7 +240,8 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_api_token_unique` (`api_token`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -241,7 +263,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `personal_access_tokens`
@@ -253,7 +275,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
