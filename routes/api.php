@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ArticleController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Request;
@@ -31,33 +32,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     Route::delete('articles/{article}', [ArticleController::class,'delete']);
 // });
 
-// Route::prefix('example-api-crud')->group(function() {
-//     Route::get('articles', function() {
-//         return Article::all();
-//     });
-//     Route::get('articles/{article}', function(Article $article) {
-//         return $article;
-//     });
-//     Route::post('articles', function(Request $request) {
-//         return Article::create($request->all());
-//     });
-//     Route::put('articles/{article}', function(Request $request, Article $article) {
-//         $article->update($request->all());
-
-//         return response()->json($article, 200);
-//     });
-//     Route::delete('articles/{article}', function(Article $article) {
-//         $article->delete();
-
-//         return response()->json(null, 204);
-//     });
-// });
-
 Route::post('register', [RegisterController::class,'register']);
 Route::post('login', [LoginController::class,'login']);
 Route::post('logout', [LoginController::class,'logout']);
 
 Route::middleware(['auth:api'])->group(function () {
+    // articles
     Route::get('articles', function() {
         return Article::all();
     });
@@ -77,7 +57,16 @@ Route::middleware(['auth:api'])->group(function () {
 
         return response()->json(null, 204);
     });
+
+    // products
+    Route::get('products', [ProductController::class, 'selectAll']);
+    Route::get('products/{product_no}', [ProductController::class, 'selectOneItem']);
+    Route::post('products', [ProductController::class, 'insert']);
+    Route::put('products/{product_no}', [ProductController::class, 'update']);
+    Route::delete('products/{product_no}', [ProductController::class, 'delete']);
 });
+
+
 
 
 

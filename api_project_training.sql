@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 13, 2021 lúc 10:07 AM
+-- Thời gian đã tạo: Th10 14, 2021 lúc 12:25 PM
 -- Phiên bản máy phục vụ: 10.4.19-MariaDB
 -- Phiên bản PHP: 7.4.19
 
@@ -57,7 +57,7 @@ INSERT INTO `articles` (`id`, `title`, `body`, `created_at`, `updated_at`) VALUE
 (15, 'Vitae necessitatibus eligendi ab sunt.', 'Corporis blanditiis nisi quos. Illum vitae quaerat impedit odit modi optio quae. Odit quia voluptas est consequatur quisquam. Facilis nemo neque et.', '2021-10-10 20:41:25', '2021-10-10 20:41:25'),
 (16, 'Quam aut et incidunt dicta.', 'Quae quis labore eaque. Quod ut illo tempora molestiae voluptatem consequatur. Consequatur ut quae magnam dolorem qui officia exercitationem. Molestiae vero minus accusantium at sint. Harum beatae tempora magni.', '2021-10-10 20:41:25', '2021-10-10 20:41:25'),
 (17, 'Nam facere eveniet beatae nesciunt.', 'Quidem consectetur eligendi sunt ducimus corrupti quo est. Enim voluptas pariatur enim id ducimus exercitationem non dolorem. Voluptas id ipsum est adipisci laudantium.', '2021-10-10 20:41:25', '2021-10-10 20:41:25'),
-(18, 'Expedita et quia unde dolor deserunt nesciunt sit ut.', 'Excepturi tenetur aspernatur aut cum impedit a. Maxime harum ut hic et ea est tempora aliquam. Vel voluptates aliquid quo aut possimus voluptates molestiae. Laudantium reprehenderit voluptatem aut.', '2021-10-10 20:41:25', '2021-10-10 20:41:25'),
+(18, 'i7 10700k', 'Excepturi tenetur aspernatur aut cum impedit a. Maxime harum ut hic et ea est tempora aliquam. Vel voluptates aliquid quo aut possimus voluptates molestiae. Laudantium reprehenderit voluptatem aut.', '2021-10-10 20:41:25', '2021-10-14 02:45:37'),
 (19, 'Eum laborum hic sed fugiat.', 'Repellendus ratione quaerat quis quo nihil. Magnam tempore numquam dolorem voluptas. Exercitationem repudiandae maxime laboriosam quas delectus et ut.', '2021-10-10 20:41:25', '2021-10-10 20:41:25'),
 (20, 'Qui aut dolor quidem nemo.', 'Perspiciatis quae accusantium iste dolor. Omnis consectetur beatae omnis provident. Qui tenetur vitae est explicabo suscipit voluptatem commodi.', '2021-10-10 20:41:25', '2021-10-10 20:41:25'),
 (21, 'Nesciunt nobis esse autem reiciendis necessitatibus.', 'Quia deleniti odit esse ipsum maxime et enim voluptas. Quidem ratione voluptatem minus vel qui laudantium voluptatem. Aut commodi enim rerum.', '2021-10-10 20:41:25', '2021-10-10 20:41:25'),
@@ -89,7 +89,8 @@ INSERT INTO `articles` (`id`, `title`, `body`, `created_at`, `updated_at`) VALUE
 (47, 'Maiores consequuntur quo porro commodi molestiae enim.', 'Vero quasi sit laboriosam consequatur enim voluptatum. Repudiandae esse fugiat eum nihil deleniti quaerat. Possimus tenetur quae enim dicta deserunt voluptates dolores. At et quos placeat et nesciunt.', '2021-10-10 20:41:25', '2021-10-10 20:41:25'),
 (48, 'Repudiandae repellendus sed ut.', 'Tempore molestiae voluptas facere molestiae necessitatibus. Tenetur sequi fugit omnis dolore magni exercitationem omnis fugit. Ut fuga et in error maxime.', '2021-10-10 20:41:25', '2021-10-10 20:41:25'),
 (49, 'Iure recusandae voluptate placeat in in.', 'Cum explicabo ducimus aperiam. Possimus sapiente culpa est voluptas non dolorem. Possimus nulla nisi dolor ipsum et.', '2021-10-10 20:41:25', '2021-10-10 20:41:25'),
-(50, 'Sint fugit earum cumque.', 'Excepturi dolorum asperiores adipisci ratione. Tempore consequatur qui placeat rerum voluptatem ut voluptatem.', '2021-10-10 20:41:25', '2021-10-10 20:41:25');
+(50, 'Sint fugit earum cumque.', 'Excepturi dolorum asperiores adipisci ratione. Tempore consequatur qui placeat rerum voluptatem ut voluptatem.', '2021-10-10 20:41:25', '2021-10-10 20:41:25'),
+(55, 'a revised simple note.', 'hello this is a note. Now you saw that it was revived.', '2021-10-14 00:18:01', '2021-10-14 00:18:01');
 
 -- --------------------------------------------------------
 
@@ -129,7 +130,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (17, '2019_08_19_000000_create_failed_jobs_table', 1),
 (18, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (19, '2021_10_11_025142_create_articles_table', 1),
-(20, '2021_10_12_031636_adds_api_token_to_users_table', 2);
+(20, '2021_10_12_031636_adds_api_token_to_users_table', 2),
+(21, '2021_10_14_025943_create_products_table', 3);
 
 -- --------------------------------------------------------
 
@@ -160,6 +162,47 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `product_no` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `products`
+--
+
+INSERT INTO `products` (`id`, `product_no`, `product_name`, `description`, `created_at`, `updated_at`) VALUES
+(1, '596', 'Wehner TunnelLavender', 'Architecto voluptas deleniti qui omnis inventore quis animi.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(2, '586', 'Marlin CourtSeaShell', 'Molestiae in fugiat voluptatum possimus maxime nulla.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(3, '908', 'Alanna OverpassAquamarine', 'Id quia ut in dolor.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(4, '530', 'Runolfsdottir CornerDarkCyan', 'Libero voluptas odit vero sed est.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(5, '353', 'Block TrackLightCyan', 'Et recusandae et eum.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(6, '920', 'Teagan RestDarkKhaki', 'Velit consectetur aut ea.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(7, '033', 'Wilhelmine CourtsPeachPuff', 'Voluptates unde deleniti enim numquam qui enim.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(8, '909', 'Cydney StreetsLightSteelBlue', 'Consequuntur dolorem quas illum velit.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(9, '803', 'Lilly StreetsSandyBrown', 'Earum est atque fugiat iusto.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(10, '215', 'Jessie InletLinen', 'Et hic ipsam dolorum ducimus maiores deleniti ut et.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(11, '068', 'Antwan ViewsCrimson', 'Ea fugiat soluta ut dolores et magni sint.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(12, '622', 'Witting LodgeAntiqueWhite', 'Itaque sapiente quia quis.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(13, '925', 'Caterina UnionMediumTurquoise', 'Accusamus aperiam qui quaerat.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(14, '921', 'Dortha ShoalsCoral', 'Quas et accusamus consequatur.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(15, '494', 'Lubowitz IslandsNavy', 'Magni minima hic eligendi natus quia ea.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(16, '124', 'Koelpin StreetLemonChiffon', 'Eos placeat eum quisquam optio voluptate qui.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(17, '456', 'Nannie ShoresDarkGoldenRod', 'Dolores rerum est quasi est et velit cumque.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(18, '238', 'Hazle ParkwaysLightBlue', 'Reiciendis dicta libero deserunt non molestiae iusto quia.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(19, '537', 'Stacey ViaductOrchid', 'Eius et a voluptatem.', '2021-10-13 21:14:32', '2021-10-13 21:14:32'),
+(20, '320', 'Kristin OrchardBisque', 'Exercitationem veritatis rerum ut aliquid voluptates.', '2021-10-13 21:14:32', '2021-10-13 21:14:32');
 
 -- --------------------------------------------------------
 
@@ -196,7 +239,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (10, 'Prof. Nels Jenkins', 'bosco.jaren@nikolaus.com', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
 (11, 'Alf Heller', 'tony80@gmail.com', NULL, '$2y$10$p5rJvNRR11/J2HPDILEiGuiTaSN.KmJ9bHB3itaBgtJ0zurd5HwNC', NULL, '2021-10-11 20:15:09', '2021-10-11 20:15:09', NULL),
 (12, 'khiem handsome', 'khiemnx@test.com', NULL, '$2y$10$IcsLItUgRHrzfqmU07QLVeWY0ySUwhLeI.BB7u6OZ/Fy2Jln/k6Hy', NULL, '2021-10-11 23:25:27', '2021-10-13 00:23:10', NULL),
-(13, 'Khiem NX', 'khiem@test.com', NULL, '$2y$10$Jj5B7RsoIbdqBlvlaVFnG.NAbVw1MSIV1x7zI.NHPXPjaFkK1/HBG', NULL, '2021-10-13 00:31:11', '2021-10-13 00:50:00', 'Bflz2vKj5LQEkCzctxJIkmI9YziBw4OZ7KJg315AwlSSuUcOcWit1aekDAOV');
+(13, 'Khiem NX', 'khiem@test.com', NULL, '$2y$10$Jj5B7RsoIbdqBlvlaVFnG.NAbVw1MSIV1x7zI.NHPXPjaFkK1/HBG', NULL, '2021-10-13 00:31:11', '2021-10-13 00:50:00', 'Bflz2vKj5LQEkCzctxJIkmI9YziBw4OZ7KJg315AwlSSuUcOcWit1aekDAOV'),
+(14, 'khiem', 'khiem@test.vn', NULL, '$2y$10$7qR6F0ZSz.EOaf/G3UIB3eUYpq7VrL1eqaaZBpcOmtusGwxPLZy0.', NULL, '2021-10-13 19:08:38', '2021-10-13 19:10:51', NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -236,6 +280,13 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Chỉ mục cho bảng `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `products_product_no_unique` (`product_no`);
+
+--
 -- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
@@ -251,7 +302,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -263,7 +314,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `personal_access_tokens`
@@ -272,10 +323,16 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT cho bảng `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
